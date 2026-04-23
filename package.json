@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.mjs",
   "scripts": {
-    "dev": "PORT=3030 nodemon index.mjs"
+    "dev": "PORT=3030 nodemon index.mjs",
+    "start": "node index.mjs"
   },
   "keywords": [],
   "author": "",
