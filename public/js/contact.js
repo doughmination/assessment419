@@ -23,14 +23,14 @@ form.addEventListener('submit', (e) => {
 
     // Reset all
     Object.values(fields).forEach(({ el, err }) => {
-        err.style.display = 'none';
+        err.classList.remove('show');
         el.style.borderColor = '';
     });
 
     // Validate each
     Object.values(fields).forEach(({ el, err, check }) => {
         if (!check(el.value)) {
-            err.style.display = 'block';
+            err.classList.add('show');
             el.style.borderColor = '#dc2626';
             valid = false;
         }

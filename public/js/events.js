@@ -11,13 +11,11 @@ const categoryColours = {
     'Family Activity Day':    'badge-coral',
 };
 
-// Format date nicely
 function formatDate(dateStr) {
     const d = new Date(dateStr + 'T00:00:00');
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-// Render events into the grid
 function renderEvents(events) {
     if (events.length === 0) {
         eventsGrid.innerHTML = `<div class="no-events">😢 No events found for these filters!</div>`;
@@ -31,20 +29,19 @@ function renderEvents(events) {
         const colourClass = categoryColours[event.category] || 'badge-pink';
         const pastClass = event.isPast ? 'is-past' : '';
         return `
-            <a href="/events/${event.id}" class="event-card ${pastClass}">
+            <a href="/events/${encodeURIComponent(event.id)}" class="event-card ${pastClass}">
                 <div class="event-card-top">
-                    <span class="badge ${colourClass}">${event.category}</span>
+                    <span class="badge ${colourClass}">${escapeHTML(event.category)}</span>
                     ${event.isPast ? '<span class="badge badge-past">Past</span>' : '<span class="badge badge-mint">Upcoming</span>'}
                 </div>
-                <h3>${event.title}</h3>
-                <p>${event.description.substring(0, 100)}...</p>
+                <h3>${escapeHTML(event.title)}</h3>
+                <p>${escapeHTML(event.description.substring(0, 100))}...</p>
                 <div class="event-date">📅 ${formatDate(event.date)}</div>
             </a>
         `;
     }).join('');
 }
 
-// Fetch and render events based on current filter selections
 function loadEvents() {
     const year = yearSelect.value;
     const category = categorySelect.value;
@@ -59,25 +56,24 @@ function loadEvents() {
         });
 }
 
-// Load years into dropdown
-fetch('/events/api/years')
-    .then(res => res.json())
-    .then(years => {
-        const currentYear = new Date().getFullYear().toString();
-        yearSelect.innerHTML = years.map(year => `
-            <option value="${year}" ${year === currentYear ? 'selected' : ''}>${year}</option>
-        `).join('');
-        loadEvents();
-    });
+// Wait for both dropdowns to be populated before loading events
+const currentYear = new Date().getFullYear().toString();
 
-// Load categories into dropdown
-fetch('/events/api/categories')
-    .then(res => res.json())
-    .then(categories => {
-        categorySelect.innerHTML = `<option value="all">All Categories</option>` +
-            categories.map(cat => `<option value="${cat.name}">${cat.name}</option>`).join('');
-    });
+Promise.all([
+    fetch('/events/api/years').then(res => res.json()),
+    fetch('/events/api/categories').then(res => res.json()),
+]).then(([years, categories]) => {
+    yearSelect.innerHTML = years.map(year => `
+        <option value="${escapeHTML(year)}" ${year === currentYear ? 'selected' : ''}>${escapeHTML(year)}</option>
+    `).join('');
 
-// Listen for filter changes
+    categorySelect.innerHTML = `<option value="all">All Categories</option>` +
+        categories.map(cat => `<option value="${escapeHTML(cat.name)}">${escapeHTML(cat.name)}</option>`).join('');
+
+    loadEvents();
+}).catch(() => {
+    eventsGrid.innerHTML = `<div class="no-events">❌ Failed to load filters. Please try again.</div>`;
+});
+
 yearSelect.addEventListener('change', loadEvents);
 categorySelect.addEventListener('change', loadEvents);

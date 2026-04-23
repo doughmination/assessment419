@@ -50,7 +50,7 @@ db.serialize(() => {
         date TEXT NOT NULL,
         category_id INTEGER NOT NULL,
         image TEXT,
-        FOREIGN KEY (category_id) REFERENCES events(id)
+        FOREIGN KEY (category_id) REFERENCES event_categories(id)
     )`);
 });
 

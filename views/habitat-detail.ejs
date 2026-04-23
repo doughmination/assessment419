@@ -1,6 +1,9 @@
 <%- include('partials/header', { title: habitat.name, activePage: 'habitats' }) %>
 
-<div class="page-hero habitat-hero" style="background-image: url('/images/<%= ['rainforest.jpg','savannah.jpg','reptile.jpg','ocean.jpg','arctic.jpg'][habitat.id - 1] || 'hero.jpg' %>'); background-size: cover; background-position: center;">
+<% const heroImage = habitat.image || 'hero.jpg'; %>
+
+<div class="page-hero habitat-hero"
+     style="background-image: url('/images/<%= heroImage %>'); background-size: cover; background-position: center;">
     <div class="hero-overlay"></div>
     <div style="position:relative; z-index:2;">
         <h1><%= habitat.name %></h1>

@@ -4,7 +4,9 @@ import db from '../db/db.mjs';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const query = `%${req.query.q || ''}%`;
+    const q = (req.query.q || '').trim();
+    if (q.length < 2) return res.json([]);
+    const query = `%${q}%`;
 
     db.all(
         `SELECT 'habitat' as type, id, name, description, null as habitat_id FROM habitats 
