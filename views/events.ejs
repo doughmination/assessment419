@@ -1,0 +1,24 @@
+<%- include('partials/header', { title: 'Events', activePage: 'events' }) %>
+
+<div class="page-hero">
+    <h1>🎪 Events</h1>
+    <p>Wildlife festivals, night safaris, workshops and more!</p>
+</div>
+
+<div class="section">
+    <div class="events-controls" id="eventsControls">
+        <select id="yearSelect" aria-label="Filter by year">
+            <option value="">Loading years...</option>
+        </select>
+        <select id="categorySelect" aria-label="Filter by category">
+            <option value="all">All Categories</option>
+        </select>
+        <span id="eventCount" class="badge badge-pink"></span>
+    </div>
+
+    <div id="eventsGrid" class="event-card-grid">
+        <div class="events-loading">🍬 Loading events...</div>
+    </div>
+</div>
+
+<%- include('partials/footer', { extraJS: 'events.js' }) %>

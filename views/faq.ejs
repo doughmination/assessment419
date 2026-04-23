@@ -1,0 +1,24 @@
+<%- include('partials/header', { title: 'FAQ', activePage: 'faq' }) %>
+
+<div class="page-hero">
+    <h1>❓ FAQ</h1>
+    <p>Got questions? We've probably got answers. Probably.</p>
+</div>
+
+<div class="section">
+    <div style="max-width: 720px; margin: 0 auto;">
+        <% faqs.forEach((faq, i) => { %>
+        <div class="faq-item" data-index="<%= i %>">
+            <div class="faq-question">
+                <span><%= faq.q %></span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p><%= faq.a %></p>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('partials/footer', { extraJS: 'faq.js' }) %>

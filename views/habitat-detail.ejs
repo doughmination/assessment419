@@ -1,0 +1,49 @@
+<%- include('partials/header', { title: habitat.name, activePage: 'habitats' }) %>
+
+<div class="page-hero habitat-hero" style="background-image: url('/images/<%= ['rainforest.jpg','savannah.jpg','reptile.jpg','ocean.jpg','arctic.jpg'][habitat.id - 1] || 'hero.jpg' %>'); background-size: cover; background-position: center;">
+    <div class="hero-overlay"></div>
+    <div style="position:relative; z-index:2;">
+        <h1><%= habitat.name %></h1>
+        <p><%= habitat.description %></p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">
+        <div class="title-tag">✨ Experiences & Exhibits</div>
+        <h2>What's inside?</h2>
+        <p>Click any exhibit to find out more</p>
+    </div>
+
+    <div class="card-grid">
+        <% const colours = ['card-pink', 'card-mint', 'card-yellow', 'card-purple']; %>
+        <% const icons = ['🐾', '🌿', '👀', '✨', '🦋', '🔭']; %>
+        <% exhibits.forEach((exhibit, i) => { %>
+        <div class="card <%= colours[i % colours.length] %> exhibit-card"
+             data-id="<%= exhibit.id %>"
+             data-name="<%= exhibit.name %>"
+             data-desc="<%= exhibit.description %>">
+            <div class="card-img" style="height:140px; font-size:3rem;"><%= icons[i % icons.length] %></div>
+            <div class="card-body">
+                <h3><%= exhibit.name %></h3>
+                <p><%= exhibit.description %></p>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<div style="text-align:center; padding-bottom:3rem; position:relative; z-index:1;">
+    <a href="/habitats" class="btn btn-secondary">← Back to all habitats</a>
+</div>
+
+<div id="exhibitModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+        <div class="modal-icon" id="modalIcon">🐾</div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+    </div>
+</div>
+
+<%- include('partials/footer', { extraJS: 'habitat.js' }) %>

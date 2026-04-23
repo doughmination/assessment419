@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍬</text></svg>">
+    <title><%= typeof title !== 'undefined' ? title + ' | Gumtopia Park' : 'Gumtopia Park' %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <% if (typeof extraCSS !== 'undefined') { %>
+        <link rel="stylesheet" href="/css/<%= extraCSS %>">
+    <% } %>
+</head>
+<body>
+
+<div class="opening-banner">
+    <span>🕘</span> <strong>Open Every Day</strong> <span>|</span> 9:00am – 6:00pm <span>|</span> 365 days a year
+</div>
+
+<nav class="navbar" aria-label="Main navigation">
+    <div class="navbar-inner">
+        <a href="/" class="navbar-brand">
+            <span class="brand-icon">🍬</span>
+            <span>Gumtopia Park</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/" class="<%= typeof activePage !== 'undefined' && activePage === 'home' ? 'active' : '' %>">Home</a></li>
+            <li><a href="/habitats" class="<%= typeof activePage !== 'undefined' && activePage === 'habitats' ? 'active' : '' %>">Habitats</a></li>
+            <li><a href="/events" class="<%= typeof activePage !== 'undefined' && activePage === 'events' ? 'active' : '' %>">Events</a></li>
+            <li><a href="/activity" class="<%= typeof activePage !== 'undefined' && activePage === 'activity' ? 'active' : '' %>">Activities</a></li>
+            <li><a href="/faq" class="<%= typeof activePage !== 'undefined' && activePage === 'faq' ? 'active' : '' %>">FAQ</a></li>
+            <li><a href="/contact" class="<%= typeof activePage !== 'undefined' && activePage === 'contact' ? 'active' : '' %>">Contact</a></li>
+        </ul>
+    </div>
+</nav>
