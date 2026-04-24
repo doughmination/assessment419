@@ -1,3 +1,13 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, subject to the MIT License terms.
+ * See https://opensource.org/licenses/MIT for the full licence text.
+ */
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,6 +20,9 @@ import faqRouter from './routes/faq.mjs';
 import eventsRouter from './routes/events.mjs';
 import activityRouter from './routes/activity.mjs';
 import searchRouter from './routes/search.mjs';
+import conservationRouter from './routes/conservation.mjs';
+import newsletterRouter from './routes/newsletter.mjs';
+import findUsRouter from './routes/find-us.mjs';
 
 import { check } from './disclaim.js';
 
@@ -34,7 +47,15 @@ app.use('/contact', contactRouter);
 app.use('/faq', faqRouter);
 app.use('/events', eventsRouter);
 app.use('/activity', activityRouter);
+app.use('/conservation', conservationRouter);
+app.use('/newsletter', newsletterRouter);
+app.use('/find-us', findUsRouter);
 app.use('/api/search', searchRouter);
+
+// 404 handler — must be last route
+app.use((req, res) => {
+    res.status(404).render('404', { url: req.originalUrl });
+});
 
 const server = app.listen(PORT, () => {
     console.log(`App started! 🚀`);

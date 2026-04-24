@@ -13,7 +13,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('activity');
+    res.render('find-us');
 });
 
 export default router;

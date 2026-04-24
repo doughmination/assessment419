@@ -1,0 +1,28 @@
+<%#
+  SPDX-License-Identifier: MIT
+  Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+  Licensed under the MIT License — https://opensource.org/licenses/MIT
+%>
+<%- include('partials/header', { title: 'Page Not Found' }) %>
+
+<div class="section section-fill" style="align-items:center; text-align:center;">
+    <div class="error-page">
+        <div class="error-emoji" aria-hidden="true">🦥</div>
+        <div class="error-code">404</div>
+        <h1>This trail doesn't exist</h1>
+        <p>
+            Looks like you've wandered off the beaten path. The page
+            <% if (typeof url !== 'undefined' && url) { %>
+                <code><%= url %></code>
+            <% } %>
+            couldn't be found.
+        </p>
+        <p style="opacity:0.7;">Maybe one of our lemurs ate the signpost. Let's get you back to civilisation.</p>
+        <div class="hero-buttons" style="justify-content:center; margin-top:1.75rem;">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+            <a href="/habitats" class="btn btn-outline">Explore Habitats</a>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

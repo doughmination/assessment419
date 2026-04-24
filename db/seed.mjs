@@ -1,3 +1,13 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, subject to the MIT License terms.
+ * See https://opensource.org/licenses/MIT for the full licence text.
+ */
+
 import db from './db.mjs';
 
 db.serialize(() => {
@@ -60,6 +70,20 @@ db.serialize(() => {
     const eventStmt = db.prepare(`INSERT OR IGNORE INTO events (title, description, date, category_id, image) VALUES (?, ?, ?, ?, ?)`);
     events.forEach(e => eventStmt.run(e));
     eventStmt.finalize();
+
+    // Conservation projects
+    const projects = [
+        ['Rainforest Reforestation', 'Partnering with local communities to replant thousands of native trees across threatened rainforest corridors in Borneo and the Amazon.', 'Over 42,000 trees planted since 2022', '🌳', 1],
+        ['Coral Reef Restoration', 'Funding research into heat-resistant coral strains and supporting reef rebuilding projects across the Great Barrier Reef and the Caribbean.', '3 active reef sites under restoration', '🪸', 2],
+        ['Big Cat Breeding Programme', 'A globally coordinated breeding programme for endangered big cats, focused on preserving genetic diversity for eventual reintroduction.', '17 cubs born into the programme since 2020', '🦁', 3],
+        ['Plastic-Free Oceans', 'Working with marine charities to remove plastic waste from coastlines and educating visitors about single-use alternatives.', '12 tonnes of plastic removed in 2025', '🌊', 4],
+        ['Pollinator Protection', 'Planting wildflower meadows across the park to support native bees, butterflies, and other pollinators facing habitat loss.', '4 hectares of meadow established', '🐝', 5],
+        ['Arctic Wildlife Research', 'Supporting field researchers tracking polar bear populations and monitoring the impact of melting sea ice on Arctic ecosystems.', 'Funding 3 active field teams', '🐻‍❄️', 6],
+    ];
+
+    const projectStmt = db.prepare(`INSERT OR IGNORE INTO conservation_projects (title, description, impact, icon, ordering) VALUES (?, ?, ?, ?, ?)`);
+    projects.forEach(p => projectStmt.run(p));
+    projectStmt.finalize();
 
     console.log('Database seeded successfully!');
 });

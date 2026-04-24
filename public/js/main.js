@@ -1,3 +1,13 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, subject to the MIT License terms.
+ * See https://opensource.org/licenses/MIT for the full licence text.
+ */
+
 // Mobile nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.getElementById('navLinks');
@@ -103,5 +113,63 @@ if (searchInput && searchResults) {
         if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
             searchResults.style.display = 'none';
         }
+    });
+}
+
+// Newsletter signup (footer)
+const newsletterForm = document.getElementById('newsletterForm');
+const newsletterStatus = document.getElementById('newsletterStatus');
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (newsletterForm && newsletterStatus) {
+    newsletterForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletterEmail');
+        const email = emailInput.value.trim();
+
+        newsletterStatus.classList.remove('error', 'success');
+
+        if (!EMAIL_RE.test(email)) {
+            newsletterStatus.textContent = 'Please enter a valid email address.';
+            newsletterStatus.classList.add('error');
+            return;
+        }
+
+        try {
+            const res = await fetch('/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+            const data = await res.json();
+            if (data.ok) {
+                newsletterStatus.textContent = data.message || 'Thanks for subscribing!';
+                newsletterStatus.classList.add('success');
+                emailInput.value = '';
+            } else {
+                newsletterStatus.textContent = data.error || 'Something went wrong. Please try again.';
+                newsletterStatus.classList.add('error');
+            }
+        } catch {
+            newsletterStatus.textContent = 'Could not reach the server. Please try again.';
+            newsletterStatus.classList.add('error');
+        }
+    });
+}
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
     });
 }

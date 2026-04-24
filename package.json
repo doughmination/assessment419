@@ -1,16 +1,40 @@
 {
-  "name": "com419-assesment",
+  "name": "gumtopia-park",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gumtopia Park — an eco-adventure wildlife park marketing site. Built for COM419 with Node.js, Express, EJS, and SQLite.",
   "main": "index.mjs",
+  "type": "module",
   "scripts": {
     "dev": "PORT=3030 nodemon index.mjs",
-    "start": "nodemon index.mjs"
+    "start": "nodemon index.mjs",
+    "seed": "node db/seed.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
+  "keywords": [
+    "express",
+    "ejs",
+    "sqlite",
+    "wildlife",
+    "conservation",
+    "gumtopia",
+    "com419"
+  ],
+  "author": {
+    "name": "Clove Nytrix Doughmination Twilight",
+    "email": "clovetwilight3@outlook.com",
+    "url": "https://x.com/DoughminCEO"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/doughmination/assessment419#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doughmination/assessment419.git"
+  },
+  "bugs": {
+    "url": "https://github.com/doughmination/assessment419/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "ejs": "^5.0.2",
     "express": "^5.2.1",

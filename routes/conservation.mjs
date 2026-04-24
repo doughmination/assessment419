@@ -9,11 +9,19 @@
  */
 
 import express from 'express';
+import db from '../db/db.mjs';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('activity');
+    db.all(
+        `SELECT * FROM conservation_projects ORDER BY ordering ASC, id ASC`,
+        [],
+        (err, projects) => {
+            if (err) return res.status(500).send('Database error');
+            res.render('conservation', { projects });
+        }
+    );
 });
 
 export default router;

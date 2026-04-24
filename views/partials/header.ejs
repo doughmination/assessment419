@@ -1,16 +1,46 @@
+<%#
+  SPDX-License-Identifier: MIT
+  Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+  Licensed under the MIT License — https://opensource.org/licenses/MIT
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.png" type="image/png">
-    <title><%= typeof title !== 'undefined' ? title + ' | Gumtopia Park' : 'Gumtopia Park' %></title>
+    <%
+        const pageTitle = typeof title !== 'undefined' ? title + ' | Gumtopia Park' : 'Gumtopia Park';
+        const pageDesc = (typeof description !== 'undefined' && description)
+            ? description
+            : 'Gumtopia Park — an eco-adventure wildlife park with five wild habitats, events, activities and a global conservation mission.';
+        const pageImage = (typeof ogImage !== 'undefined' && ogImage) ? ogImage : '/images/hero.jpg';
+    %>
+    <title><%= pageTitle %></title>
+    <meta name="description" content="<%= pageDesc %>">
+    <meta name="theme-color" content="#1a0f2e">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gumtopia Park">
+    <meta property="og:title" content="<%= pageTitle %>">
+    <meta property="og:description" content="<%= pageDesc %>">
+    <meta property="og:image" content="<%= pageImage %>">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= pageTitle %>">
+    <meta name="twitter:description" content="<%= pageDesc %>">
+    <meta name="twitter:image" content="<%= pageImage %>">
+
     <link rel="stylesheet" href="/css/style.css">
     <% if (typeof extraCSS !== 'undefined') { %>
         <link rel="stylesheet" href="/css/<%= extraCSS %>">
     <% } %>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <div class="opening-banner">
     <span>🕘</span> <strong>Open Every Day</strong> <span>|</span> 9:00am – 6:00pm <span>|</span> 365 days a year
@@ -30,8 +60,12 @@
             <li><a href="/habitats" class="<%= typeof activePage !== 'undefined' && activePage === 'habitats' ? 'active' : '' %>">Habitats</a></li>
             <li><a href="/events" class="<%= typeof activePage !== 'undefined' && activePage === 'events' ? 'active' : '' %>">Events</a></li>
             <li><a href="/activity" class="<%= typeof activePage !== 'undefined' && activePage === 'activity' ? 'active' : '' %>">Activities</a></li>
+            <li><a href="/conservation" class="<%= typeof activePage !== 'undefined' && activePage === 'conservation' ? 'active' : '' %>">Conservation</a></li>
             <li><a href="/faq" class="<%= typeof activePage !== 'undefined' && activePage === 'faq' ? 'active' : '' %>">FAQ</a></li>
+            <li><a href="/find-us" class="<%= typeof activePage !== 'undefined' && activePage === 'find-us' ? 'active' : '' %>">Find Us</a></li>
             <li><a href="/contact" class="<%= typeof activePage !== 'undefined' && activePage === 'contact' ? 'active' : '' %>">Contact</a></li>
         </ul>
     </div>
 </nav>
+
+<main id="main">
