@@ -4,7 +4,7 @@
 
 <img src="https://raw.githubusercontent.com/doughmination/GitCommit2/refs/heads/main/assets/icon.png" alt="GitCommit Logo" width="128" height="128">
 <div>
-<img src="https://github.com/doughmination/assiassessment419/actions/workflows/ci.yml/badge.svg">
+<img src="https://github.com/doughmination/assessment419/actions/workflows/ci.yml/badge.svg">
 
 This is the full repository for the COM419 Assessment for Student 1031102721 (Clove Nytrix Doughmination Twilight).
 
