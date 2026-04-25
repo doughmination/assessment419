@@ -61,6 +61,14 @@ app.use((req, res) => {
 
 const server = app.listen(PORT, () => {
     console.log(`App started! 🚀`);
+
+    if (process.env.NODE_ENV === "test") {
+        db.close();
+        server.close(() => {
+            console.log("Test run complete, server closed");
+            process.exit(0);
+        });
+    }
 });
 
 process.stdin.resume();
