@@ -23,6 +23,7 @@ import searchRouter from './routes/search.mjs';
 import conservationRouter from './routes/conservation.mjs';
 import newsletterRouter from './routes/newsletter.mjs';
 import findUsRouter from './routes/find-us.mjs';
+import adminRouter from './routes/admin.mjs';
 
 import { check } from './disclaim.js';
 
@@ -51,6 +52,7 @@ app.use('/conservation', conservationRouter);
 app.use('/newsletter', newsletterRouter);
 app.use('/find-us', findUsRouter);
 app.use('/api/search', searchRouter);
+app.use('/admin', adminRouter);
 
 // 404 handler — must be last route
 app.use((req, res) => {
