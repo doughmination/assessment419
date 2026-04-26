@@ -6,52 +6,53 @@
 <%- include('partials/header', { title: 'Conservation', activePage: 'conservation', description: 'Discover the wildlife conservation projects Gumtopia Park funds and supports around the world.' }) %>
 
 <div class="page-hero">
-    <h1>🌱 Conservation at Gumtopia</h1>
-    <p>Every ticket you buy helps fund real-world wildlife projects. Here's what we've been up to.</p>
+  <h1>🌱 Conservation at Gumtopia</h1>
+  <p>Every ticket you buy helps fund real-world wildlife projects. Here's what we've been up to.</p>
 </div>
 
 <div class="section">
-    <div class="section-title">
-        <h2>Our Active Projects</h2>
-        <p>From rainforests to reefs, we put your support where it matters.</p>
-    </div>
+  <div class="section-title">
+    <h2>Our Active Projects</h2>
+    <p>From rainforests to reefs, we put your support where it matters.</p>
+  </div>
 
-    <% if (!projects || projects.length === 0) { %>
-        <p style="text-align:center; opacity:0.7;">Project information coming soon.</p>
-    <% } else { %>
-        <div class="card-grid">
-            <% projects.forEach(project => { %>
-                <div class="card conservation-card">
-                    <div class="card-body">
-                        <div style="font-size:3rem; margin-bottom:0.75rem;"><%= project.icon || '🌿' %></div>
-                        <h3><%= project.title %></h3>
-                        <p><%= project.description %></p>
-                        <% if (project.impact) { %>
-                            <div class="impact-badge">
-                                <strong>Impact:</strong> <%= project.impact %>
-                            </div>
-                        <% } %>
-                    </div>
-                </div>
-            <% }) %>
+  <% if (!projects || projects.length === 0) { %>
+  <p style="text-align: center; opacity: 0.7">Project information coming soon.</p>
+  <% } else { %>
+  <div class="card-grid">
+    <% projects.forEach(project => { %>
+    <div class="card conservation-card">
+      <div class="card-body">
+        <div style="font-size: 3rem; margin-bottom: 0.75rem"><%= project.icon || '🌿' %></div>
+        <h3><%= project.title %></h3>
+        <p><%= project.description %></p>
+        <% if (project.impact) { %>
+        <div class="impact-badge">
+          <strong>Impact:</strong>
+          <%= project.impact %>
         </div>
-    <% } %>
+        <% } %>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% } %>
 </div>
 
-<section style="background: rgba(110,231,183,0.06); padding: 4rem 2rem; margin-top: 2rem;">
-    <div style="max-width:var(--content-max); margin:0 auto; text-align:center;">
-        <div class="section-title">
-            <h2>How You Can Help</h2>
-        </div>
-        <p style="max-width:720px; margin:0 auto 1.5rem; opacity:0.85; line-height:1.7;">
-            Visiting Gumtopia Park directly funds our conservation mission. Beyond your ticket, you can adopt an
-            animal, attend a workshop, or join our newsletter for campaign updates.
-        </p>
-        <div class="hero-buttons" style="justify-content:center;">
-            <a href="/activity" class="btn btn-primary">See Activities</a>
-            <a href="/contact" class="btn btn-outline">Get In Touch</a>
-        </div>
+<section style="background: rgba(110, 231, 183, 0.06); padding: 4rem 2rem; margin-top: 2rem">
+  <div style="max-width: var(--content-max); margin: 0 auto; text-align: center">
+    <div class="section-title">
+      <h2>How You Can Help</h2>
     </div>
+    <p style="max-width: 720px; margin: 0 auto 1.5rem; opacity: 0.85; line-height: 1.7">
+      Visiting Gumtopia Park directly funds our conservation mission. Beyond your ticket, you can
+      adopt an animal, attend a workshop, or join our newsletter for campaign updates.
+    </p>
+    <div class="hero-buttons" style="justify-content: center">
+      <a href="/activity" class="btn btn-primary">See Activities</a>
+      <a href="/contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
 </section>
 
 <%- include('partials/footer') %>

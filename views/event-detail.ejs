@@ -6,55 +6,67 @@
 <%- include('partials/header', { title: event.title, activePage: 'events', description: event.description }) %>
 
 <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <ol>
-        <li><a href="/">Home</a></li>
-        <li><a href="/events">Events</a></li>
-        <li aria-current="page"><%= event.title %></li>
-    </ol>
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/events">Events</a></li>
+    <li aria-current="page"><%= event.title %></li>
+  </ol>
 </nav>
 
 <div class="page-hero">
-    <h1><%= event.title %></h1>
-    <p><%= event.category %></p>
+  <h1><%= event.title %></h1>
+  <p><%= event.category %></p>
 </div>
 
 <div class="section">
-    <div style="max-width: 720px; margin: 0 auto;">
-
-        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; align-items:center;">
-            <% const colours = {
-                'Wildlife Festival': 'badge-pink',
-                'Conservation Workshop': 'badge-mint',
-                'Night Safari': 'badge-purple',
-                'Guest Speaker': 'badge-yellow',
-                'Family Activity Day': 'badge-coral'
-            }; %>
-            <span class="badge <%= colours[event.category] || 'badge-pink' %>"><%= event.category %></span>
-            <% if (event.isPast) { %>
-                <span class="badge badge-past">⏰ This event has already taken place</span>
-            <% } else { %>
-                <span class="badge badge-mint">✅ Upcoming Event</span>
-            <% } %>
-        </div>
-
-        <div class="form-wrap">
-            <div style="font-size:0.85rem; font-weight:700; color:var(--purple); margin-bottom:1rem;">
-                📅 <%= new Date(event.date + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) %>
-            </div>
-
-            <% if (event.isPast) { %>
-            <div style="background:rgba(253,230,138,0.15); border:1px solid rgba(253,230,138,0.3); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1.5rem; font-weight:700; color:var(--yellow);">
-                ⏰ This event has already occurred. Check our upcoming events for what's next!
-            </div>
-            <% } %>
-
-            <p style="color:var(--text-mid); line-height:1.8; font-size:0.95rem;"><%= event.description %></p>
-        </div>
-
-        <div style="text-align:center; margin-top:2rem;">
-            <a href="/events" class="btn btn-secondary">← Back to Events</a>
-        </div>
+  <div style="max-width: 720px; margin: 0 auto">
+    <div
+      style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center"
+    >
+      <% const colours = { 'Wildlife Festival': 'badge-pink', 'Conservation Workshop': 'badge-mint',
+      'Night Safari': 'badge-purple', 'Guest Speaker': 'badge-yellow', 'Family Activity Day':
+      'badge-coral' }; %>
+      <span class="badge <%= colours[event.category] || 'badge-pink' %>"
+        ><%= event.category %></span
+      >
+      <% if (event.isPast) { %>
+      <span class="badge badge-past">⏰ This event has already taken place</span>
+      <% } else { %>
+      <span class="badge badge-mint">✅ Upcoming Event</span>
+      <% } %>
     </div>
+
+    <div class="form-wrap">
+      <div style="font-size: 0.85rem; font-weight: 700; color: var(--purple); margin-bottom: 1rem">
+        📅 <%= new Date(event.date + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'long',
+        day: 'numeric', month: 'long', year: 'numeric' }) %>
+      </div>
+
+      <% if (event.isPast) { %>
+      <div
+        style="
+          background: rgba(253, 230, 138, 0.15);
+          border: 1px solid rgba(253, 230, 138, 0.3);
+          border-radius: var(--radius-sm);
+          padding: 1rem;
+          margin-bottom: 1.5rem;
+          font-weight: 700;
+          color: var(--yellow);
+        "
+      >
+        ⏰ This event has already occurred. Check our upcoming events for what's next!
+      </div>
+      <% } %>
+
+      <p style="color: var(--text-mid); line-height: 1.8; font-size: 0.95rem">
+        <%= event.description %>
+      </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem">
+      <a href="/events" class="btn btn-secondary">← Back to Events</a>
+    </div>
+  </div>
 </div>
 
 <%- include('partials/footer') %>

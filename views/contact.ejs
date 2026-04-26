@@ -6,44 +6,59 @@
 <%- include('partials/header', { title: 'Contact', activePage: 'contact' }) %>
 
 <div class="page-hero">
-    <h1>📬 Contact Us</h1>
-    <p>Drop us a message — we don't bite. The animals might though.</p>
+  <h1>📬 Contact Us</h1>
+  <p>Drop us a message — we don't bite. The animals might though.</p>
 </div>
 
 <div class="section section-fill">
-    <% if (success) { %>
-    <div class="success-banner">
-        🎉 Message sent! We'll get back to you soon.
-    </div>
-    <% } %>
+  <% if (success) { %>
+  <div class="success-banner">🎉 Message sent! We'll get back to you soon.</div>
+  <% } %>
 
-    <div class="form-wrap">
-        <form id="contactForm" action="/contact" method="POST" novalidate>
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="e.g. Jane Smith" autocomplete="name">
-                <span class="error-msg" id="nameError">Please enter your name.</span>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="e.g. jane@example.com" autocomplete="email">
-                <span class="error-msg" id="emailError">Please enter a valid email address.</span>
-            </div>
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="What's it about?">
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Tell us what's on your mind..." maxlength="1000"></textarea>
-                <div class="message-meta">
-                    <span class="error-msg" id="messageError">Please write at least 10 characters.</span>
-                    <span class="char-count" id="messageCount" aria-live="polite">0 / 1000</span>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message 🍬</button>
-        </form>
-    </div>
+  <div class="form-wrap">
+    <form id="contactForm" action="/contact" method="POST" novalidate>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="e.g. Jane Smith"
+          autocomplete="name"
+        />
+        <span class="error-msg" id="nameError">Please enter your name.</span>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="e.g. jane@example.com"
+          autocomplete="email"
+        />
+        <span class="error-msg" id="emailError">Please enter a valid email address.</span>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="What's it about?" />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Tell us what's on your mind..."
+          maxlength="1000"
+        ></textarea>
+        <div class="message-meta">
+          <span class="error-msg" id="messageError">Please write at least 10 characters.</span>
+          <span class="char-count" id="messageCount" aria-live="polite">0 / 1000</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%">Send Message 🍬</button>
+    </form>
+  </div>
 </div>
 
 <%- include('partials/footer', { extraJS: 'contact.js' }) %>

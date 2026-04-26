@@ -8,20 +8,20 @@
  * See https://opensource.org/licenses/MIT for the full licence text.
  */
 
-import express from 'express';
-import db from '../db/db.mjs';
+import express from "express";
+import db from "../db/db.mjs";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    db.all(
-        `SELECT * FROM conservation_projects ORDER BY ordering ASC, id ASC`,
-        [],
-        (err, projects) => {
-            if (err) return res.status(500).send('Database error');
-            res.render('conservation', { projects });
-        }
-    );
+router.get("/", (req, res) => {
+  db.all(
+    `SELECT * FROM conservation_projects ORDER BY ordering ASC, id ASC`,
+    [],
+    (err, projects) => {
+      if (err) return res.status(500).send("Database error");
+      res.render("conservation", { projects });
+    }
+  );
 });
 
 export default router;

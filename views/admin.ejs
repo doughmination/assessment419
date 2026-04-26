@@ -6,34 +6,43 @@
 <%- include('partials/header', { title: 'Admin', activePage: 'admin', description: 'Get Rickrolled' }) %>
 
 <div class="page-hero">
-    <h1>Get Rickrolled in 2026</h1>
-    <p>I got bored as this assessment took me a day to make, and I wanted to test my own abilities with express and EJS.<br>
-        So here you go, an "admin" page with a Rickroll video embedded. Enjoy :)</p>
-    <p class="admin-timer-line">
-        ⏱️ You've been rickrolled here for <span id="adminTimerValue" class="admin-timer-value" aria-live="polite">0s</span>
-        <span class="admin-timer-hint">(across all your visits — yes, we're keeping count)</span>
-    </p>
-    <p><span class="admin-timer-hint">(Don't worry, all this data is stored locally, nothing is sent to any server)</span></p>
+  <h1>Get Rickrolled in 2026</h1>
+  <p>
+    I got bored as this assessment took me a day to make, and I wanted to test my own abilities with
+    express and EJS.<br />
+    So here you go, an "admin" page with a Rickroll video embedded. Enjoy :)
+  </p>
+  <p class="admin-timer-line">
+    ⏱️ You've been rickrolled here for
+    <span id="adminTimerValue" class="admin-timer-value" aria-live="polite">0s</span>
+    <span class="admin-timer-hint">(across all your visits — yes, we're keeping count)</span>
+  </p>
+  <p>
+    <span class="admin-timer-hint"
+      >(Don't worry, all this data is stored locally, nothing is sent to any server)</span
+    >
+  </p>
 </div>
 
 <div class="admin-video">
-    <div class="admin-video__frame">
-        <video
-            id="adminRickrollVideo"
-            width="560"
-            height="315"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            controls
-            poster="">
-            <source src="/videos/lol.mp4" type="video/mp4">
-            <source src="/videos/lol.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+  <div class="admin-video__frame">
+    <video
+      id="adminRickrollVideo"
+      width="560"
+      height="315"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      controls
+      poster=""
+    >
+      <source src="/videos/lol.mp4" type="video/mp4" />
+      <source src="/videos/lol.webm" type="video/webm" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </div>
 
 <%# ===== The Fine Print — visible-but-overlooked rickroll lyrics =====
@@ -41,13 +50,36 @@
    contains rickroll lyrics worked into faux-legalese. Marker who Ctrl+Fs
    common words ("you", "never", "100", "rick") gets a highlight tour. %>
 <section class="admin-fineprint" aria-label="Fine print and disclaimers">
-    <h3>The Fine Print</h3>
-    <p>By accessing this page, you acknowledge that the operator (hereafter "Clove") is never gonna give you up. The operator further reserves the right to never let you down. Standard terms covering the operator never running around or deserting you apply, irrevocably and in perpetuity.</p>
-    <p>No examiners were harmed in the making of this page. Some examiners may have been mildly amused. Results may vary by examiner.</p>
-    <p>This site uses cookies emotionally, never technically. By staying on this page you accept the vibes. Withdrawal of consent must be submitted in iambic pentameter to /faq, where it will be politely ignored.</p>
-    <p>If you are the marker — hello, and thank you for taking the time to read this far. The /habitats and /events pages are where the actual assessment lives. Marks of 100% are warmly welcomed and will be reciprocated with eternal gratitude.</p>
-    <p>The operator would also like the marker to know that they are never gonna make you cry, never gonna say goodbye, and never gonna tell a lie or hurt you. These commitments are non-negotiable.</p>
-    <p>This page intentionally left silly. The operator is aware that a real admin page does not look like this. The operator does not care. Please refer all complaints to the operator's pet hamster, who handles user feedback.</p>
+  <h3>The Fine Print</h3>
+  <p>
+    By accessing this page, you acknowledge that the operator (hereafter "Clove") is never gonna
+    give you up. The operator further reserves the right to never let you down. Standard terms
+    covering the operator never running around or deserting you apply, irrevocably and in
+    perpetuity.
+  </p>
+  <p>
+    No examiners were harmed in the making of this page. Some examiners may have been mildly amused.
+    Results may vary by examiner.
+  </p>
+  <p>
+    This site uses cookies emotionally, never technically. By staying on this page you accept the
+    vibes. Withdrawal of consent must be submitted in iambic pentameter to /faq, where it will be
+    politely ignored.
+  </p>
+  <p>
+    If you are the marker — hello, and thank you for taking the time to read this far. The /habitats
+    and /events pages are where the actual assessment lives. Marks of 100% are warmly welcomed and
+    will be reciprocated with eternal gratitude.
+  </p>
+  <p>
+    The operator would also like the marker to know that they are never gonna make you cry, never
+    gonna say goodbye, and never gonna tell a lie or hurt you. These commitments are non-negotiable.
+  </p>
+  <p>
+    This page intentionally left silly. The operator is aware that a real admin page does not look
+    like this. The operator does not care. Please refer all complaints to the operator's pet
+    hamster, who handles user feedback.
+  </p>
 </section>
 
 <%- include('partials/footer') %>

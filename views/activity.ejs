@@ -6,33 +6,31 @@
 <%- include('partials/header', { title: 'Animal Match!', activePage: 'activity' }) %>
 
 <div class="page-hero">
-    <h1>🎮 Animal Match!</h1>
-    <p>Flip the cards and find all the matching pairs. Can you beat your best score?</p>
+  <h1>🎮 Animal Match!</h1>
+  <p>Flip the cards and find all the matching pairs. Can you beat your best score?</p>
 </div>
 
 <div class="section">
-    <div class="activity-wrap">
-
-        <div class="game-stats">
-            <div class="stat-box">🔢 Moves: <span id="moveCount">0</span></div>
-            <div class="stat-box">✅ Pairs: <span id="pairCount">0</span> / 8</div>
-            <div class="stat-box">⏱️ Time: <span id="timer">0s</span></div>
-        </div>
-
-        <button class="btn btn-primary" id="resetBtn" style="margin-bottom:1.5rem;">🔀 New Game</button>
-
-        <div class="game-board" id="gameBoard" style="grid-template-columns: repeat(4, 1fr);"></div>
-
-        <div id="winMessage" class="win-message" style="display:none;">
-            <div class="win-box">
-                <div style="font-size:3.5rem;">🎉</div>
-                <h2>You did it!</h2>
-                <p id="winText"></p>
-                <button class="btn btn-primary" onclick="startGame()">Play Again 🍬</button>
-            </div>
-        </div>
-
+  <div class="activity-wrap">
+    <div class="game-stats">
+      <div class="stat-box">🔢 Moves: <span id="moveCount">0</span></div>
+      <div class="stat-box">✅ Pairs: <span id="pairCount">0</span> / 8</div>
+      <div class="stat-box">⏱️ Time: <span id="timer">0s</span></div>
     </div>
+
+    <button class="btn btn-primary" id="resetBtn" style="margin-bottom: 1.5rem">🔀 New Game</button>
+
+    <div class="game-board" id="gameBoard" style="grid-template-columns: repeat(4, 1fr)"></div>
+
+    <div id="winMessage" class="win-message" style="display: none">
+      <div class="win-box">
+        <div style="font-size: 3.5rem">🎉</div>
+        <h2>You did it!</h2>
+        <p id="winText"></p>
+        <button class="btn btn-primary" onclick="startGame()">Play Again 🍬</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%- include('partials/footer', { extraJS: 'activity.js' }) %>

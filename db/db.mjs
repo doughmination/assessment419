@@ -8,29 +8,29 @@
  * See https://opensource.org/licenses/MIT for the full licence text.
  */
 
-import sqlite3 from 'sqlite3';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import sqlite3 from "sqlite3";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dbPath = path.join(__dirname, '..', 'database.db');
+const dbPath = path.join(__dirname, "..", "database.db");
 
 const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
-    if (err) console.error('DB connection error:', err);
-    else console.log('Connected to SQLite database');
+  if (err) console.error("DB connection error:", err);
+  else console.log("Connected to SQLite database");
 });
 
 db.serialize(() => {
-    db.run(`CREATE TABLE IF NOT EXISTS habitats (
+  db.run(`CREATE TABLE IF NOT EXISTS habitats (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         description TEXT NOT NULL,
         image TEXT
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS exhibits (
+  db.run(`CREATE TABLE IF NOT EXISTS exhibits (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         habitat_id INTEGER NOT NULL,
         name TEXT NOT NULL,
@@ -39,7 +39,7 @@ db.serialize(() => {
         FOREIGN KEY (habitat_id) REFERENCES habitats(id)
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS contact_submissions (
+  db.run(`CREATE TABLE IF NOT EXISTS contact_submissions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         email TEXT NOT NULL,
@@ -48,12 +48,12 @@ db.serialize(() => {
         submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS event_categories (
+  db.run(`CREATE TABLE IF NOT EXISTS event_categories (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS events (
+  db.run(`CREATE TABLE IF NOT EXISTS events (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT NOT NULL,
         description TEXT NOT NULL,
@@ -63,7 +63,7 @@ db.serialize(() => {
         FOREIGN KEY (category_id) REFERENCES event_categories(id)
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS conservation_projects (
+  db.run(`CREATE TABLE IF NOT EXISTS conservation_projects (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT NOT NULL,
         description TEXT NOT NULL,
@@ -72,7 +72,7 @@ db.serialize(() => {
         ordering INTEGER DEFAULT 0
     )`);
 
-    db.run(`CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
+  db.run(`CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         email TEXT NOT NULL UNIQUE,
         subscribed_at DATETIME DEFAULT CURRENT_TIMESTAMP

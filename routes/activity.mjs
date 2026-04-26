@@ -8,12 +8,12 @@
  * See https://opensource.org/licenses/MIT for the full licence text.
  */
 
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('activity');
+router.get("/", (req, res) => {
+  res.render("activity");
 });
 
 export default router;
