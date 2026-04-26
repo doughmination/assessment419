@@ -68,6 +68,8 @@ const server = app.listen(PORT, () => {
       console.log("Test run complete, server closed");
       process.exit(0);
     });
+  } else {
+    console.log(`Server is running on http://localhost:${PORT}`);
   }
 });
 
