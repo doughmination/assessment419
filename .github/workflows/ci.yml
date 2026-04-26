@@ -17,11 +17,20 @@ jobs:
       - name: Install dependencies
         run: npm i
 
+      - name: Install lint & format tools (global)
+        run: npm i -g eslint prettier
+
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: "npm"
+
+      - name: Lint
+        run: eslint "**/*.{js,mjs,cjs}" --ignore-pattern "node_modules/**"
+
+      - name: Format check
+        run: prettier --check "**/*.{js,mjs,cjs,json,md,ejs,css,html}" --ignore-path .gitignore
 
       - name: Test
         run: npm run test
