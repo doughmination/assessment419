@@ -4,3 +4,7 @@ package-lock.json
 *.min.css
 db/*.sqlite
 db/*.db
+
+# EJS partials split HTML tags across files (header opens, footer closes),
+# which Prettier's HTML parser can't handle. Skip them.
+views/partials/
