@@ -8,7 +8,10 @@
     "dev": "PORT=3030 nodemon index.mjs",
     "start": "nodemon index.mjs",
     "seed": "node db/seed.mjs",
-    "test": "NODE_ENV=test node index.mjs"
+    "test": "NODE_ENV=test node index.mjs",
+    "lint": "eslint \"**/*.{js,mjs,cjs}\" --ignore-pattern \"node_modules/**\" --fix",
+    "format": "prettier --write \"**/*.{js,mjs,cjs,json,md,css,html,ejs}\" --plugin=$(npm root -g)/prettier-plugin-ejs/index.js",
+    "prettylint": "npm run lint && npm run format"
   },
   "keywords": [
     "express",

@@ -10,7 +10,6 @@
 
 const ANIMALS = ["🦁", "🐘", "🦒", "🐊", "🦜", "🐧", "🦋", "🐠"];
 
-let cards = [];
 let flipped = [];
 let matched = 0;
 let moves = 0;
@@ -46,7 +45,7 @@ function startGame() {
   const board = document.getElementById("gameBoard");
   board.innerHTML = "";
 
-  cards = deck.map((animal, i) => {
+  deck.forEach((animal, i) => {
     const card = document.createElement("div");
     card.className = "game-card";
     card.dataset.animal = animal;
@@ -59,7 +58,6 @@ function startGame() {
         `;
     card.addEventListener("click", () => onCardClick(card));
     board.appendChild(card);
-    return card;
   });
 
   // Start timer on first click — handled in onCardClick
