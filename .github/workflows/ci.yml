@@ -33,7 +33,7 @@ jobs:
         run: eslint "**/*.{js,mjs,cjs}" --ignore-pattern "node_modules/**"
 
       - name: Format check
-        run: prettier --check "**/*.{js,mjs,cjs,json,md,css,html,ejs}" --ignore-path .gitignore --plugin=${{ steps.globals.outputs.path }}/prettier-plugin-ejs
+        run: prettier --check "**/*.{js,mjs,cjs,json,md,css,html,ejs}" --ignore-path .gitignore --plugin=${{ steps.globals.outputs.path }}/prettier-plugin-ejs/index.js
 
       - name: Test
         run: npm run test
