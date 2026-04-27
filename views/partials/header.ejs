@@ -9,6 +9,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <%# ===== Accessibility prefs boot script =====
+        Runs synchronously before the stylesheet so the page paints in
+        the user's chosen theme/colorblind mode/font immediately — no
+        flash-of-dark-content when light mode is selected.
+        Stored in localStorage by /js/accessibility.js.
+    %>
+    <script>
+        (function () {
+            try {
+                var html = document.documentElement;
+                var theme = localStorage.getItem('a11y-theme') || 'auto';
+                var cb = localStorage.getItem('a11y-cb') || 'none';
+                var font = localStorage.getItem('a11y-font') || 'default';
+                var cursor = localStorage.getItem('a11y-cursor') || 'on';
+
+                var resolved = theme;
+                if (theme === 'auto') {
+                    resolved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
+                        ? 'light'
+                        : 'dark';
+                }
+                html.setAttribute('data-theme', resolved);
+                html.setAttribute('data-theme-mode', theme);
+                html.setAttribute('data-cb', cb);
+                html.setAttribute('data-font', font);
+                html.setAttribute('data-cursor', cursor);
+            } catch (e) {
+                /* private mode / disabled storage — keep defaults */
+            }
+        })();
+    </script>
+
     <%
         const pageTitle = typeof title !== 'undefined' ? title + ' | Gumtopia Park' : 'Gumtopia Park';
         const pageDesc = (typeof description !== 'undefined' && description)
@@ -67,5 +100,11 @@
         </ul>
     </div>
 </nav>
+
+<%# Accessibility menu — included here (not in footer) so the toggle and
+    panel are direct children of <body>, not nested inside <main> or
+    <footer>. That keeps position:fixed working correctly even when
+    monochrome mode applies a filter to body's other children. %>
+<%- include('accessibility') %>
 
 <main id="main">

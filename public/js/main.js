@@ -608,6 +608,9 @@ if (backToTop) {
 // ===== Cursor bubble trail =====
 // Spawns soft bubble elements that follow the mouse and float upward.
 // Skipped on touch devices and when the user prefers reduced motion.
+// Also skipped when the accessibility menu has turned the trail off
+// (html[data-cursor="off"]) — checked at spawn time so toggling the
+// option in the a11y panel takes effect immediately, no refresh.
 (function setupBubbleTrail() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const noHover = window.matchMedia("(hover: none)").matches;
@@ -621,6 +624,9 @@ if (backToTop) {
   document.addEventListener(
     "mousemove",
     (e) => {
+      // User has disabled the trail via the accessibility menu.
+      if (document.documentElement.getAttribute("data-cursor") === "off") return;
+
       const now = performance.now();
       if (now - lastSpawn < SPAWN_INTERVAL) return;
       if (liveCount >= MAX_LIVE) return;

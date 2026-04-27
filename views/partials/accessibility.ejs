@@ -1,0 +1,80 @@
+<%#
+  SPDX-License-Identifier: MIT
+  Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+  Licensed under the MIT License — https://opensource.org/licenses/MIT
+
+  Accessibility menu — floating button (bottom-left so it doesn't collide
+  with #backToTop) plus the slide-up settings panel.
+
+  All preferences (theme mode, colourblind palette, dyslexia font) persist
+  to localStorage and are applied to <html> on every page load via the
+  inline boot script in views/partials/header.ejs. Runtime UI logic lives
+  in /public/js/accessibility.js.
+
+  This partial is included from views/partials/footer.ejs so every page
+  gets the menu without each individual view needing to think about it.
+%>
+<button id="a11yToggle" class="a11y-toggle" aria-label="Open accessibility menu" aria-expanded="false" aria-controls="a11yPanel" type="button">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="4.5" r="1.6" fill="currentColor"/>
+        <path d="M3.5 8.5h17"/>
+        <path d="M9 8.5l1.2 12"/>
+        <path d="M15 8.5l-1.2 12"/>
+        <path d="M9.5 13.5h5"/>
+    </svg>
+</button>
+
+<div id="a11yPanel" class="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11yPanelTitle" hidden>
+    <div class="a11y-panel-header">
+        <h2 id="a11yPanelTitle">Accessibility</h2>
+        <button id="a11yClose" class="a11y-panel-close" aria-label="Close accessibility menu" type="button">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+        </button>
+    </div>
+
+    <fieldset class="a11y-group">
+        <legend>Theme</legend>
+        <div class="a11y-segmented" role="radiogroup" aria-label="Theme mode">
+            <label><input type="radio" name="a11y-theme" value="auto"><span>Auto</span></label>
+            <label><input type="radio" name="a11y-theme" value="light"><span>Light</span></label>
+            <label><input type="radio" name="a11y-theme" value="dark"><span>Dark</span></label>
+        </div>
+        <p class="a11y-hint">Auto follows your browser/OS preference.</p>
+    </fieldset>
+
+    <fieldset class="a11y-group">
+        <legend>Colour vision</legend>
+        <div class="a11y-stacked" role="radiogroup" aria-label="Colourblind palette">
+            <label><input type="radio" name="a11y-cb" value="none"><span>Default palette</span></label>
+            <label><input type="radio" name="a11y-cb" value="protanopia"><span>Protanopia friendly</span><small>red-blind</small></label>
+            <label><input type="radio" name="a11y-cb" value="deuteranopia"><span>Deuteranopia friendly</span><small>green-blind</small></label>
+            <label><input type="radio" name="a11y-cb" value="tritanopia"><span>Tritanopia friendly</span><small>blue-blind</small></label>
+            <label><input type="radio" name="a11y-cb" value="monochrome"><span>Monochrome</span><small>grayscale</small></label>
+        </div>
+    </fieldset>
+
+    <fieldset class="a11y-group">
+        <legend>Reading</legend>
+        <label class="a11y-switch">
+            <input type="checkbox" id="a11yFontToggle">
+            <span class="a11y-switch-track" aria-hidden="true"><span class="a11y-switch-thumb"></span></span>
+            <span class="a11y-switch-label">Dyslexia-friendly font</span>
+        </label>
+        <p class="a11y-hint">Replaces the site font with OpenDyslexic.</p>
+    </fieldset>
+
+    <fieldset class="a11y-group">
+        <legend>Motion</legend>
+        <label class="a11y-switch">
+            <input type="checkbox" id="a11yCursorToggle" checked>
+            <span class="a11y-switch-track" aria-hidden="true"><span class="a11y-switch-thumb"></span></span>
+            <span class="a11y-switch-label">Cursor bubble trail</span>
+        </label>
+        <p class="a11y-hint">Turn off the floating bubbles that follow your mouse.</p>
+    </fieldset>
+
+    <button id="a11yReset" class="a11y-reset" type="button">Reset to defaults</button>
+    <p class="a11y-footnote">Settings are saved on this device only.</p>
+</div>
