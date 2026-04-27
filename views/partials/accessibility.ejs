@@ -56,13 +56,13 @@
     </fieldset>
 
     <fieldset class="a11y-group">
-        <legend>Reading</legend>
-        <label class="a11y-switch">
-            <input type="checkbox" id="a11yFontToggle">
-            <span class="a11y-switch-track" aria-hidden="true"><span class="a11y-switch-thumb"></span></span>
-            <span class="a11y-switch-label">Dyslexia-friendly font</span>
-        </label>
-        <p class="a11y-hint">Replaces the site font with OpenDyslexic.</p>
+        <legend>Font</legend>
+        <div class="a11y-segmented" role="radiogroup" aria-label="Site font">
+            <label><input type="radio" name="a11y-font" value="comic"><span>Comic</span></label>
+            <label><input type="radio" name="a11y-font" value="dyslexic"><span>Dyslexic</span></label>
+            <label><input type="radio" name="a11y-font" value="mono"><span>Mono</span></label>
+        </div>
+        <p class="a11y-hint">Comic Code (default), OpenDyslexic, or a plain monospace stack.</p>
     </fieldset>
 
     <fieldset class="a11y-group">

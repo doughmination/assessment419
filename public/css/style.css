@@ -2452,6 +2452,18 @@ html[data-font="dyslexic"] select {
   letter-spacing: 0.01em;
 }
 
+/* Plain system monospace stack — keeps the coder vibe Comic Code provides
+   but uses each platform's native programming font. No web download. */
+html[data-font="mono"] body,
+html[data-font="mono"] input,
+html[data-font="mono"] textarea,
+html[data-font="mono"] button,
+html[data-font="mono"] select {
+  font-family:
+    ui-monospace, "SF Mono", "Cascadia Mono", "Source Code Pro", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
+}
+
 /* ----------------------- LIGHT THEME ----------------------- */
 html[data-theme="light"] {
   --bg: #fef6fb;

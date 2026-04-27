@@ -23,17 +23,16 @@
   const STORAGE = {
     theme: "a11y-theme", // "auto" | "light" | "dark"
     cb: "a11y-cb", // "none" | "protanopia" | "deuteranopia" | "tritanopia" | "monochrome"
-    font: "a11y-font", // "default" | "dyslexic"
+    font: "a11y-font", // "comic" | "dyslexic" | "mono"
     cursor: "a11y-cursor", // "on" | "off"
   };
-  const DEFAULTS = { theme: "auto", cb: "none", font: "default", cursor: "on" };
+  const DEFAULTS = { theme: "auto", cb: "none", font: "comic", cursor: "on" };
 
   const html = document.documentElement;
   const toggle = document.getElementById("a11yToggle");
   const panel = document.getElementById("a11yPanel");
   const closeBtn = document.getElementById("a11yClose");
   const resetBtn = document.getElementById("a11yReset");
-  const fontToggle = document.getElementById("a11yFontToggle");
   const cursorToggle = document.getElementById("a11yCursorToggle");
 
   // Bail out cleanly if the partials haven't rendered the panel for some
@@ -96,7 +95,9 @@
     panel
       .querySelectorAll('input[name="a11y-cb"]')
       .forEach((r) => (r.checked = r.value === state.cb));
-    if (fontToggle) fontToggle.checked = state.font === "dyslexic";
+    panel
+      .querySelectorAll('input[name="a11y-font"]')
+      .forEach((r) => (r.checked = r.value === state.font));
     if (cursorToggle) cursorToggle.checked = state.cursor === "on";
   };
 
@@ -141,11 +142,7 @@
     const target = e.target;
     if (!target || !target.name) {
       // Switch checkboxes don't have a name attribute — dispatch by id.
-      if (target && target.id === "a11yFontToggle") {
-        state.font = target.checked ? "dyslexic" : "default";
-        safeSet(STORAGE.font, state.font);
-        apply();
-      } else if (target && target.id === "a11yCursorToggle") {
+      if (target && target.id === "a11yCursorToggle") {
         state.cursor = target.checked ? "on" : "off";
         safeSet(STORAGE.cursor, state.cursor);
         apply();
@@ -159,6 +156,10 @@
     } else if (target.name === "a11y-cb") {
       state.cb = target.value;
       safeSet(STORAGE.cb, state.cb);
+      apply();
+    } else if (target.name === "a11y-font") {
+      state.font = target.value;
+      safeSet(STORAGE.font, state.font);
       apply();
     }
   });
