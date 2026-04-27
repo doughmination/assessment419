@@ -2738,7 +2738,10 @@ html[data-theme="light"] .a11y-toggle:hover {
   bottom: 5rem;
   left: 1.5rem;
   width: min(340px, calc(100vw - 3rem));
-  max-height: calc(100vh - 7rem);
+  /* Cap the top edge below the sticky navbar (~4.25rem) and opening-banner
+     (~2rem) so the legend never disappears behind them on short viewports.
+     Internal overflow-y: auto handles anything still too tall. */
+  max-height: calc(100vh - 11.5rem);
   overflow-y: auto;
   padding: 1.25rem 1.25rem 1rem;
   border-radius: var(--radius);
@@ -2751,7 +2754,9 @@ html[data-theme="light"] .a11y-toggle:hover {
     0 20px 60px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(255, 110, 180, 0.2);
   color: var(--text-dark);
-  z-index: 950;
+  /* Above the navbar (z:1000) — belt-and-braces so the panel can never
+     be clipped by it, even if the max-height calc is wrong on some viewport. */
+  z-index: 1050;
   opacity: 0;
   transform: translateY(8px) scale(0.98);
   transform-origin: bottom left;
