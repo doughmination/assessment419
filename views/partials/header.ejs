@@ -71,7 +71,7 @@
         <link rel="stylesheet" href="/css/<%= extraCSS %>">
     <% } %>
 </head>
-<body>
+<body class="<%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
 
 <a href="#main" class="skip-link">Skip to main content</a>
 

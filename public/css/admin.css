@@ -1,0 +1,488 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+ *
+ * ===== /admin RETRO 2001 OVERRIDES =====
+ * Every selector is scoped under body.page-admin so this file is a no-op
+ * on every other route. It deliberately overrides the modern liquid-glass
+ * look with a Geocities / "Best viewed in IE 6" / Comic Sans aesthetic.
+ *
+ * If you're reading this in 2026 wondering why the admin page looks like
+ * it was coded by a 13-year-old in 2001 — that's the joke. Carry on.
+ */
+
+/* ---------- BACKGROUND + GLOBAL TYPE ---------- */
+body.page-admin {
+  /* Loud tiled-feeling background built from layered radial gradients,
+     evoking a starfield-on-marble-on-clouds Geocities tile. */
+  background-color: #008080 !important;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 0, 0.35) 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.6) 0 2px, transparent 3px),
+    radial-gradient(circle at 50% 80%, rgba(255, 0, 255, 0.4) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 20%, rgba(0, 255, 255, 0.4) 0 2px, transparent 3px),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.04) 0 2px,
+      transparent 2px 8px
+    ),
+    linear-gradient(180deg, #008080 0%, #4040a0 50%, #008080 100%) !important;
+  background-size:
+    120px 120px,
+    160px 160px,
+    140px 140px,
+    180px 180px,
+    100% 100%,
+    100% 100%;
+  background-attachment: fixed !important;
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive !important;
+  color: #ffff00 !important;
+  text-shadow: 1px 1px 0 #000, 0 0 2px #000;
+}
+
+/* Kill the modern decorative background blobs/gradients on this page only. */
+body.page-admin::before,
+body.page-admin::after {
+  display: none !important;
+  content: none !important;
+}
+
+body.page-admin main,
+body.page-admin #main {
+  background: transparent !important;
+  max-width: none !important;
+  padding: 16px !important;
+}
+
+/* ---------- LINKS: classic underlined blue / purple visited ---------- */
+body.page-admin a {
+  color: #0000ee !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+  background: transparent !important;
+  font-weight: bold !important;
+}
+body.page-admin a:visited {
+  color: #551a8b !important;
+}
+body.page-admin a:hover {
+  color: #ff0000 !important;
+  background: #ffff00 !important;
+}
+body.page-admin a:active {
+  color: #ff0000 !important;
+}
+
+/* ---------- OPENING BANNER + NAVBAR -> retro chrome ---------- */
+body.page-admin .opening-banner {
+  background: #c0c0c0 !important;
+  color: #000080 !important;
+  border-top: 2px solid #ffffff !important;
+  border-bottom: 2px solid #404040 !important;
+  font-family: "Times New Roman", Times, serif !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+  letter-spacing: 0 !important;
+}
+
+body.page-admin .navbar {
+  background: #c0c0c0 !important;
+  background-image: linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 100%) !important;
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #404040 !important;
+  border-bottom: 2px solid #404040 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 2px 0 #000 !important;
+}
+
+body.page-admin .navbar-inner {
+  background: transparent !important;
+}
+
+body.page-admin .navbar-brand {
+  font-family: "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif !important;
+  font-size: 1.6rem !important;
+  color: #ff00ff !important;
+  text-shadow:
+    1px 1px 0 #ffff00,
+    2px 2px 0 #000 !important;
+  letter-spacing: 1px !important;
+}
+
+body.page-admin .nav-links a {
+  color: #0000ee !important;
+  background: #ffffff !important;
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #404040 !important;
+  border-bottom: 2px solid #404040 !important;
+  border-radius: 0 !important;
+  padding: 4px 10px !important;
+  font-family: "MS Sans Serif", "Tahoma", sans-serif !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+}
+body.page-admin .nav-links a:hover {
+  background: #ffff00 !important;
+  color: #ff0000 !important;
+}
+body.page-admin .nav-links a.active {
+  background: #000080 !important;
+  color: #ffffff !important;
+  border-top: 2px solid #404040 !important;
+  border-left: 2px solid #404040 !important;
+  border-right: 2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+}
+
+/* ---------- HERO -> beveled "welcome" card ---------- */
+body.page-admin .page-hero {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-top: 3px solid #ffffff !important;
+  border-left: 3px solid #ffffff !important;
+  border-right: 3px solid #808080 !important;
+  border-bottom: 3px solid #808080 !important;
+  outline: 2px solid #000 !important;
+  margin: 24px auto !important;
+  padding: 24px !important;
+  max-width: 720px !important;
+  text-align: center !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 #000 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body.page-admin .page-hero h1 {
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  font-size: 2.6rem !important;
+  line-height: 1.1 !important;
+  color: #ff0000 !important;
+  background: linear-gradient(
+    90deg,
+    #ff0000 0%,
+    #ff8000 16%,
+    #ffff00 33%,
+    #00ff00 50%,
+    #00ffff 66%,
+    #0000ff 83%,
+    #ff00ff 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+  animation: page-admin-rainbow 6s linear infinite !important;
+  background-size: 200% 100% !important;
+}
+
+@keyframes page-admin-rainbow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+body.page-admin .page-hero p {
+  font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+  font-size: 1rem !important;
+  color: #000080 !important;
+  text-shadow: none !important;
+  margin: 8px 0 !important;
+}
+
+body.page-admin .page-hero p:first-of-type::before {
+  content: "★彡 ";
+  color: #ff00ff;
+}
+body.page-admin .page-hero p:first-of-type::after {
+  content: " 彡★";
+  color: #ff00ff;
+}
+
+/* The timer line — make it look like a counter */
+body.page-admin .admin-timer-line {
+  font-family: "Courier New", Courier, monospace !important;
+  background: #000000 !important;
+  color: #00ff00 !important;
+  border-top: 2px solid #404040 !important;
+  border-left: 2px solid #404040 !important;
+  border-right: 2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+  display: inline-block !important;
+  padding: 8px 14px !important;
+  margin: 12px auto !important;
+  text-shadow: 0 0 4px #00ff00 !important;
+  letter-spacing: 1px !important;
+}
+
+body.page-admin .admin-timer-value {
+  font-family: "Courier New", Courier, monospace !important;
+  color: #ffff00 !important;
+  background: #000000 !important;
+  padding: 0 4px !important;
+  text-shadow: 0 0 6px #ffff00 !important;
+  border: 1px dashed #00ff00 !important;
+}
+
+body.page-admin .admin-timer-hint {
+  color: #ff00ff !important;
+  font-style: italic !important;
+  font-family: "Comic Sans MS", cursive !important;
+}
+
+/* ---------- VIDEO FRAME -> chunky beveled "media player" ---------- */
+body.page-admin .admin-video {
+  margin: 32px auto !important;
+}
+
+body.page-admin .admin-video__frame {
+  background: #c0c0c0 !important;
+  border-top: 4px solid #ffffff !important;
+  border-left: 4px solid #ffffff !important;
+  border-right: 4px solid #404040 !important;
+  border-bottom: 4px solid #404040 !important;
+  border-radius: 0 !important;
+  padding: 8px !important;
+  box-shadow: 8px 8px 0 #000 !important;
+  position: relative !important;
+}
+
+/* Replace any modern flame ::before/::after with retro "title bar" */
+body.page-admin .admin-video__frame::before {
+  content: "♪ Windows Media Player — now playing: nggyu.mp4 ♪" !important;
+  display: block !important;
+  position: static !important;
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%) !important;
+  color: #ffffff !important;
+  font-family: "MS Sans Serif", Tahoma, sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: bold !important;
+  text-align: left !important;
+  padding: 4px 8px !important;
+  margin: -8px -8px 8px -8px !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+  filter: none !important;
+  animation: none !important;
+  letter-spacing: 0 !important;
+}
+
+body.page-admin .admin-video__frame::after {
+  content: "" !important;
+  display: none !important;
+}
+
+body.page-admin .admin-video__frame video,
+body.page-admin .admin-video__frame iframe {
+  border: 2px inset #808080 !important;
+  border-radius: 0 !important;
+  background: #000 !important;
+}
+
+/* ---------- FINE PRINT -> "guestbook" card ---------- */
+body.page-admin .admin-fineprint {
+  background: #ffffcc !important;
+  color: #000000 !important;
+  border-top: 3px solid #ffffff !important;
+  border-left: 3px solid #ffffff !important;
+  border-right: 3px solid #808080 !important;
+  border-bottom: 3px solid #808080 !important;
+  outline: 2px solid #000 !important;
+  max-width: 720px !important;
+  margin: 32px auto !important;
+  padding: 20px !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 #000 !important;
+  font-family: "Times New Roman", Times, serif !important;
+  text-shadow: none !important;
+}
+
+body.page-admin .admin-fineprint h3 {
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  color: #ff0000 !important;
+  background: #ffff00 !important;
+  border: 2px ridge #ff0000 !important;
+  display: inline-block !important;
+  padding: 4px 12px !important;
+  margin: 0 0 12px 0 !important;
+  text-shadow: 1px 1px 0 #fff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+}
+
+body.page-admin .admin-fineprint h3::before {
+  content: "<<< ";
+}
+body.page-admin .admin-fineprint h3::after {
+  content: " >>>";
+}
+
+body.page-admin .admin-fineprint p {
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  color: #000080 !important;
+  text-shadow: none !important;
+  margin-bottom: 10px !important;
+  border-bottom: 1px dotted #888 !important;
+  padding-bottom: 6px !important;
+}
+
+body.page-admin .admin-fineprint p:last-child {
+  border-bottom: none !important;
+}
+
+/* ---------- ASCII-style "best viewed in" footer cap ---------- */
+body.page-admin main::after,
+body.page-admin #main::after {
+  content: "★ Best viewed in Internet Explorer 6.0 at 800×600 ★ © 2001 — actually 2026" !important;
+  display: block !important;
+  text-align: center !important;
+  font-family: "Courier New", Courier, monospace !important;
+  font-size: 0.85rem !important;
+  color: #ffffff !important;
+  background: #000080 !important;
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #404040 !important;
+  border-bottom: 2px solid #404040 !important;
+  max-width: 720px !important;
+  margin: 24px auto 12px auto !important;
+  padding: 8px !important;
+  letter-spacing: 1px !important;
+  text-shadow: 1px 1px 0 #000 !important;
+  animation: page-admin-blink 1.4s steps(2, start) infinite !important;
+}
+
+@keyframes page-admin-blink {
+  to { visibility: hidden; }
+}
+
+/* Respect reduced motion: kill the blink + rainbow scroll */
+@media (prefers-reduced-motion: reduce) {
+  body.page-admin main::after,
+  body.page-admin #main::after {
+    animation: none !important;
+  }
+  body.page-admin .page-hero h1 {
+    animation: none !important;
+  }
+}
+
+/* ---------- FOOTER -> chunky chrome strip ---------- */
+body.page-admin footer,
+body.page-admin .site-footer {
+  background: #c0c0c0 !important;
+  color: #000080 !important;
+  border-top: 3px solid #ffffff !important;
+  font-family: "MS Sans Serif", Tahoma, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.page-admin footer *,
+body.page-admin .site-footer * {
+  text-shadow: none !important;
+}
+
+/* ---------- BUTTONS / INPUTS that might appear -> Win98 chunky ---------- */
+body.page-admin button,
+body.page-admin .btn,
+body.page-admin input[type="button"],
+body.page-admin input[type="submit"] {
+  background: #c0c0c0 !important;
+  background-image: linear-gradient(180deg, #e0e0e0, #a0a0a0) !important;
+  color: #000 !important;
+  border-top: 2px solid #ffffff !important;
+  border-left: 2px solid #ffffff !important;
+  border-right: 2px solid #404040 !important;
+  border-bottom: 2px solid #404040 !important;
+  border-radius: 0 !important;
+  font-family: "MS Sans Serif", Tahoma, sans-serif !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  padding: 4px 12px !important;
+}
+body.page-admin button:active,
+body.page-admin .btn:active {
+  border-top: 2px solid #404040 !important;
+  border-left: 2px solid #404040 !important;
+  border-right: 2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
+}
+
+/* ---------- CUSTOM SCROLLBAR (Win98 chrome) ---------- */
+body.page-admin::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+body.page-admin::-webkit-scrollbar-track {
+  background:
+    repeating-conic-gradient(#c0c0c0 0% 25%, #a0a0a0 0% 50%) 0 0 / 4px 4px;
+}
+body.page-admin::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+body.page-admin {
+  scrollbar-color: #c0c0c0 #808080;
+  scrollbar-width: auto;
+}
+
+/* ---------- "Under construction" sash above the hero ----------
+   Important: style.css already defines .page-hero::before as
+   position:absolute; inset:0 (the modern glow overlay). We have to
+   explicitly reset position + inset here, otherwise the diagonal
+   stripes cover the whole hero card and eat the text. */
+body.page-admin .page-hero::before {
+  content: "🚧 UNDER CONSTRUCTION 🚧 UNDER CONSTRUCTION 🚧" !important;
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffff00 0 14px,
+    #000000 14px 28px
+  ) !important;
+  color: #ff0000 !important;
+  font-family: "Impact", "Arial Black", sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-align: center !important;
+  padding: 4px 0 !important;
+  margin: -24px -24px 18px -24px !important;
+  text-shadow:
+    1px 1px 0 #ffffff,
+    2px 2px 0 #000000 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  border-bottom: 2px solid #000 !important;
+  opacity: 1 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* The hero needs to allow the sash and the box-shadow to be visible. */
+body.page-admin .page-hero {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Disable the modern liquid-glass shimmer effects from style.css. */
+body.page-admin * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
