@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: assessment419
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3030:3030"
