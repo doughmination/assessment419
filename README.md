@@ -14,6 +14,16 @@ This repository exists to document the development process, provide version cont
 
 </div></div>
 
+# Tech Stack
+
+<div align="center">
+
+The allowed techstack was Express, EJS and SqLite3, however some scripts I made used globally installed npm packages that were on my machine. These global packages include <a href="https://www.npmjs.com/package/nodemon">Nodemon</a>, <a href="https://www.npmjs.com/package/prettier">Prettier</a> (and the <a href="https://www.npmjs.com/package/prettier-plugin-ejs">EJS plugin</a>) and <a href="https://www.npmjs.com/package/eslint">ESLint</a>
+
+All of these can be found on the <a href="https://www.npmjs.com/">Node Package Manager</a>
+
+</div>
+
 # Developers
 
 <div align="center">

@@ -13,13 +13,11 @@ export function check() {
   // Unset PORT is fine — index.mjs defaults to 5000. Only warn when PORT is
   // explicitly set to something other than 5000.
   const port = process.env.PORT;
-  if (port && port !== "5000") {
-    console.warn(`⚠️ WARNING: The server is running on port ${port} instead of 5000.
-⚠️ This code was developed by Clove Twilight on MacOS Tahoe 26.5 Beta
-⚠️ This may cause issues when running in the assessment environment, as it may use the wrong port.
-⚠️ MacOS reserves port 5000, the project required for this assessment, for AirPlay, hence I set it to 3030 for development.
-⚠️ If you see this warning in the assessment environment, please acknowledge this minor assessment flaw, as this was not something I could control.\n`);
+  if ( port === "3030") {
+    console.warn("Development mode activated! Running on port 3030.\n");
+  } else if (port && port !== "5000") {
+    console.warn(`Warning: running on port ${port} instead of 5000!\n`);
   } else {
-    console.log("✅ Server is running on the expected port 5000.");
+    console.log("✅ Server is running on the expected port 5000.\n");
   }
 }

@@ -26,8 +26,18 @@ import findUsRouter from "./routes/find-us.mjs";
 import adminRouter from "./routes/admin.mjs";
 
 import { check } from "./disclaim.js";
+import seedDatabase from "./db/seed.mjs";
 
 check();
+
+function isDatabaseEmpty() {
+  return new Promise((resolve, reject) => {
+    db.get("SELECT COUNT(*) as count FROM habitats", (err, row) => {
+      if (err) return reject(err);
+      resolve(row.count === 0);
+    });
+  });
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -59,24 +69,42 @@ app.use((req, res) => {
   res.status(404).render("404", { url: req.originalUrl });
 });
 
-const server = app.listen(PORT, () => {
-  console.log(`App started! 🚀`);
+async function init() {
+  try {
+    const empty = await isDatabaseEmpty();
 
-  if (process.env.NODE_ENV === "test") {
-    db.close();
-    server.close(() => {
-      console.log("Test run complete, server closed");
+    if (empty) {
+      console.log("Database empty — seeding...\n");
+      await seedDatabase();
+    } else {
+      console.log("Database already seeded.\n");
+    }
+
+    const server = app.listen(PORT, () => {
+      console.log(`App started! 🚀\n`);
+
+      if (process.env.NODE_ENV === "test") {
+        db.close();
+        server.close(() => {
+          console.log("Test run complete, server closed");
+          process.exit(0);
+        });
+      } else {
+        console.log(`Server is running on http://localhost:${PORT}\n`);
+      }
+    });
+
+    process.stdin.resume();
+
+    process.on("SIGINT", () => {
+      server.close();
+      db.close();
       process.exit(0);
     });
-  } else {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  } catch (err) {
+    console.error("Startup error:", err, "\n");
+    process.exit(1);
   }
-});
+}
 
-process.stdin.resume();
-
-process.on("SIGINT", () => {
-  server.close();
-  db.close();
-  process.exit(0);
-});
+init();
