@@ -13,7 +13,7 @@ export function check() {
   // Unset PORT is fine — index.mjs defaults to 5000. Only warn when PORT is
   // explicitly set to something other than 5000.
   const port = process.env.PORT;
-  if ( port === "3030") {
+  if (port === "3030") {
     console.warn("Development mode activated! Running on port 3030.\n");
   } else if (port && port !== "5000") {
     console.warn(`Warning: running on port ${port} instead of 5000!\n`);
