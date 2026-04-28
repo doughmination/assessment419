@@ -21,11 +21,7 @@ body.page-admin {
     radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.6) 0 2px, transparent 3px),
     radial-gradient(circle at 50% 80%, rgba(255, 0, 255, 0.4) 0 2px, transparent 3px),
     radial-gradient(circle at 70% 20%, rgba(0, 255, 255, 0.4) 0 2px, transparent 3px),
-    repeating-linear-gradient(
-      45deg,
-      rgba(0, 0, 0, 0.04) 0 2px,
-      transparent 2px 8px
-    ),
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.04) 0 2px, transparent 2px 8px),
     linear-gradient(180deg, #008080 0%, #4040a0 50%, #008080 100%) !important;
   background-size:
     120px 120px,
@@ -37,7 +33,9 @@ body.page-admin {
   background-attachment: fixed !important;
   font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive !important;
   color: #ffff00 !important;
-  text-shadow: 1px 1px 0 #000, 0 0 2px #000;
+  text-shadow:
+    1px 1px 0 #000,
+    0 0 2px #000;
 }
 
 /* Kill the modern decorative background blobs/gradients on this page only. */
@@ -183,8 +181,12 @@ body.page-admin .page-hero h1 {
 }
 
 @keyframes page-admin-rainbow {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 body.page-admin .page-hero p {
@@ -362,7 +364,9 @@ body.page-admin #main::after {
 }
 
 @keyframes page-admin-blink {
-  to { visibility: hidden; }
+  to {
+    visibility: hidden;
+  }
 }
 
 /* Respect reduced motion: kill the blink + rainbow scroll */
@@ -424,8 +428,7 @@ body.page-admin::-webkit-scrollbar {
   height: 16px;
 }
 body.page-admin::-webkit-scrollbar-track {
-  background:
-    repeating-conic-gradient(#c0c0c0 0% 25%, #a0a0a0 0% 50%) 0 0 / 4px 4px;
+  background: repeating-conic-gradient(#c0c0c0 0% 25%, #a0a0a0 0% 50%) 0 0 / 4px 4px;
 }
 body.page-admin::-webkit-scrollbar-thumb {
   background: #c0c0c0;
@@ -451,11 +454,7 @@ body.page-admin .page-hero::before {
   display: block !important;
   width: auto !important;
   height: auto !important;
-  background: repeating-linear-gradient(
-    45deg,
-    #ffff00 0 14px,
-    #000000 14px 28px
-  ) !important;
+  background: repeating-linear-gradient(45deg, #ffff00 0 14px, #000000 14px 28px) !important;
   color: #ff0000 !important;
   font-family: "Impact", "Arial Black", sans-serif !important;
   font-size: 0.9rem !important;
