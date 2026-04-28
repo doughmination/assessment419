@@ -1,22 +1,20 @@
 # Auto-detect text files and normalize line endings
 * text=auto
-
 # Enforce LF for all source files (Node ecosystem standard)
 *.js   text eol=lf
 *.mjs  text eol=lf
 *.ejs  text eol=lf
 *.md   text eol=lf
 *.yml  text eol=lf
-
 # SQLite database (must be treated as binary)
 *.db   binary
-
 # Images / assets
-*.png  binary
-*.jpg  binary
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
 *.jpeg binary
 *.gif  binary
 *.ico  binary
-
 # Prevent diff noise in environment files
 .env -diff
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.svg filter=lfs diff=lfs merge=lfs -text
