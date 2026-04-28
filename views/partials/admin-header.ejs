@@ -1,0 +1,64 @@
+<%#
+  SPDX-License-Identifier: MIT
+  Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+  Licensed under the MIT License — https://opensource.org/licenses/MIT
+
+  Self-contained header for the /admin route. Deliberately doesn't share
+  partials/header.ejs or style.css — the retro 2001 aesthetic gets its
+  own DOCTYPE, its own nav markup, its own class names ("retro-*"), and
+  ONLY admin.css. That way nothing on this page can ever affect the
+  modern look on /, /habitats, /events, /faq etc., and vice versa.
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <%
+        const pageTitle = (typeof title !== 'undefined' ? title + ' | Gumtopia Park' : 'Gumtopia Park');
+        const pageDesc  = (typeof description !== 'undefined' && description)
+            ? description
+            : 'Gumtopia Park admin portal — best viewed in Internet Explorer 6.0.';
+    %>
+    <title><%= pageTitle %></title>
+    <meta name="description" content="<%= pageDesc %>">
+    <meta name="theme-color" content="#008080">
+
+    <%# Open Graph / Twitter — kept minimal, the modern site uses partials/header for the rest %>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gumtopia Park">
+    <meta property="og:title" content="<%= pageTitle %>">
+    <meta property="og:description" content="<%= pageDesc %>">
+
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="retro-body">
+
+<a href="#main" class="retro-skip">Skip to main content</a>
+
+<%# Marquee at the top — yes <marquee> is deprecated, that's the whole point.
+   Still rendered by every major browser at time of writing. %>
+<div class="retro-banner">
+    <marquee behavior="scroll" direction="left" scrollamount="4">
+        ★彡 WELCOME to the GUMTOPIA PARK ADMIN PORTAL 彡★ &nbsp;&nbsp; You are visitor #00001337 &nbsp;&nbsp; Sign my guestbook! &nbsp;&nbsp; Best viewed in Internet Explorer 6.0 @ 800x600 &nbsp;&nbsp; Hit count last updated: 14/03/2001 &nbsp;&nbsp; ★彡 彡★
+    </marquee>
+</div>
+
+<nav class="retro-nav" aria-label="Main navigation">
+    <a href="/" class="retro-brand">
+        <span aria-hidden="true">🍬</span> GUMTOPIA PARK
+    </a>
+    <ul class="retro-nav-links">
+        <li><a href="/">[ Home ]</a></li>
+        <li><a href="/habitats">[ Habitats ]</a></li>
+        <li><a href="/events">[ Events ]</a></li>
+        <li><a href="/activity">[ Activities ]</a></li>
+        <li><a href="/conservation">[ Conservation ]</a></li>
+        <li><a href="/faq">[ FAQ ]</a></li>
+        <li><a href="/admin" id="adminNavLink" class="retro-active">[ Admin ]</a></li>
+    </ul>
+</nav>
+
+<main id="main" class="retro-main">

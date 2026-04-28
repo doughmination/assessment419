@@ -1,0 +1,59 @@
+<%#
+  SPDX-License-Identifier: MIT
+  Copyright (c) 2026 Clove Nytrix Doughmination Twilight
+  Licensed under the MIT License — https://opensource.org/licenses/MIT
+
+  Self-contained footer for /admin. Uses retro-* class names that don't
+  exist anywhere else in the site, so this markup + admin.css is fully
+  isolated from style.css.
+
+  Only main.js is loaded — accessibility.js relies on the modern theme
+  vars and would do nothing useful here. The rickroll-timer counter
+  (#adminTimerValue) and click-trap overlay live in main.js and are
+  feature-detected, so they activate without needing any partial change.
+%>
+</main>
+
+<footer class="retro-footer">
+    <hr class="retro-rule">
+
+    <table class="retro-footer-table" role="presentation">
+        <tr>
+            <td>
+                <h4 class="retro-h4">🍬 Gumtopia Park</h4>
+                <p class="retro-footer-p">An eco-adventure wildlife park, est. 2026 (vibes from 2001).</p>
+                <p class="retro-footer-p"><a href="mailto:webmaster@gumtopia.example">webmaster@gumtopia.example</a></p>
+            </td>
+            <td>
+                <h4 class="retro-h4">Webring</h4>
+                <p class="retro-footer-p">
+                    [<a href="/">Home</a>]
+                    [<a href="/habitats">Habitats</a>]
+                    [<a href="/events">Events</a>]
+                    [<a href="/conservation">Conservation</a>]
+                    [<a href="/faq">FAQ</a>]
+                </p>
+            </td>
+            <td>
+                <h4 class="retro-h4">Visitor Counter</h4>
+                <p class="retro-counter">00001337</p>
+                <p class="retro-footer-p retro-footer-p--small">last updated 14/03/2001</p>
+            </td>
+        </tr>
+    </table>
+
+    <div class="retro-badges" aria-hidden="true">
+        <span class="retro-badge retro-badge--ie">Best&nbsp;viewed&nbsp;in&nbsp;<strong>IE&nbsp;6</strong></span>
+        <span class="retro-badge retro-badge--ns">Netscape&nbsp;Now!</span>
+        <span class="retro-badge retro-badge--html">Valid&nbsp;HTML&nbsp;4.01</span>
+        <span class="retro-badge retro-badge--made">Made&nbsp;with&nbsp;<em>NotePad</em></span>
+    </div>
+
+    <p class="retro-cap retro-cap--blink">★ Best viewed in Internet Explorer 6.0 at 800×600 ★</p>
+    <p class="retro-cap">© 2001 — actually 2026, Gumtopia Park. Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT</a> by Clove Nytrix Doughmination Twilight.</p>
+    <p class="retro-cap">This site is also hosted on <a href="http://assessment419.doughmination.co.uk" target="_blank" rel="noopener noreferrer">Doughmination</a> — a server I own.</p>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
